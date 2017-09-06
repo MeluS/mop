@@ -1,5 +1,5 @@
 ################################################
-# Trinity Core World Server configuration file #
+# MoPCore World Server configuration file #
 ################################################
 [worldserver]
 
@@ -85,13 +85,13 @@ LogsDir = ""
 #                                                                 section my.ini)
 #                     ".;/path/to/unix_socket;username;password;database" - (use Unix sockets on
 #                                                                           Unix/Linux)
-#        Default:     "127.0.0.1;3306;trinity;trinity;auth"       - (LoginDatabaseInfo)
-#                     "127.0.0.1;3306;trinity;trinity;world"      - (WorldDatabaseInfo)
-#                     "127.0.0.1;3306;trinity;trinity;characters" - (CharacterDatabaseInfo)
+#        Default:     "127.0.0.1;3306;mopcore;mopcore;auth"       - (LoginDatabaseInfo)
+#                     "127.0.0.1;3306;mopcore;mopcore;characters" - (CharacterDatabaseInfo)
+#                     "127.0.0.1;3306;mopcore;mopcore;world"      - (WorldDatabaseInfo)
 
-LoginDatabaseInfo     = "127.0.0.1;3306;trinity;trinity;auth"
-WorldDatabaseInfo     = "127.0.0.1;3306;trinity;trinity;world"
-CharacterDatabaseInfo = "127.0.0.1;3306;trinity;trinity;characters"
+LoginDatabaseInfo     = "127.0.0.1;3306;mopcore;mopcore;auth"
+CharacterDatabaseInfo = "127.0.0.1;3306;mopcore;mopcore;characters"
+WorldDatabaseInfo     = "127.0.0.1;3306;mopcore;mopcore;world"
 
 #
 #    LoginDatabase.WorkerThreads
@@ -1103,7 +1103,7 @@ BeepAtStart = 1
 #        Example:     "Welcome to John\'s Server@This server runs on Trinity Core."
 #        Default:     "Welcome to a Trinity Core server."
 
-Motd = "Bienvenue sur Pandashan, le premier serveur Mist of Pandaria au monde !"
+Motd = "Welcome to World of Warcraft Mists of Pandaria"
 
 #
 #    Server.LoginInfo

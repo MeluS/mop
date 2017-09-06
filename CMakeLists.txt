@@ -17,7 +17,7 @@ if(POLICY CMP0053)
 endif()
 
 # Set projectname (must be done AFTER setting configurationtypes)
-project(JadeCore)
+project(MoPCore)
 
 # Set RPATH-handing (CMake parameters)
 set(CMAKE_SKIP_BUILD_RPATH 0)
