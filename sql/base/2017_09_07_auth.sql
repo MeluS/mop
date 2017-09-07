@@ -240,7 +240,7 @@ CREATE TABLE `realmlist` (
   `address` varchar(255) NOT NULL DEFAULT '127.0.0.1',
   `port` smallint(5) unsigned NOT NULL DEFAULT '8085',
   `icon` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `flag` tinyint(3) unsigned NOT NULL DEFAULT '2',
+  `flag` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `timezone` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `allowedSecurityLevel` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `population` float unsigned NOT NULL DEFAULT '0',
@@ -254,7 +254,7 @@ CREATE TABLE `realmlist` (
 
 /*Data for the table `realmlist` */
 
-insert  into `realmlist`(`id`,`name`,`address`,`port`,`icon`,`flag`,`timezone`,`allowedSecurityLevel`,`population`,`gamebuild`,`online`,`delay`,`queued`) values (1,'MoPCore547','127.0.0.1',8085,0,2,1,0,0,18019,1,10,0);
+insert  into `realmlist`(`id`,`name`,`address`,`port`,`icon`,`flag`,`timezone`,`allowedSecurityLevel`,`population`,`gamebuild`,`online`,`delay`,`queued`) values (1,'MoPCore547','127.0.0.1',8085,0,0,1,0,0,18019,1,10,0);
 
 /*Table structure for table `transferts` */
 
