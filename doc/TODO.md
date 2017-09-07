@@ -6,7 +6,6 @@ Mists of Pandaria SmartAI Scripts TODO:
 Pandaria Zones:
 
 -- Dread Wastes
--- Isle of Giants
 -- Isle of Thunder
 -- Krasarang Wilds
 -- Kun-Lai Summit
