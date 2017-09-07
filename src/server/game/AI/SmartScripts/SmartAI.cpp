@@ -492,7 +492,6 @@ void SmartAI::EnterEvadeMode()
         me->GetMotionMaster()->MoveTargetedHome();
 
     // Ouput is useless, it's generic bug related to SmartAI system
-    //sLog->OutPandashan("SmartAI::EnterEvadeMode Entry %u" , me->GetEntry());
 
     Reset();
 }
@@ -803,27 +802,26 @@ bool SmartAI::sOnDummyEffect(Unit* caster, uint32 spellId, SpellEffIndex effInde
 
 void SmartAI::SetCombatMove(bool on)
 {
-	if (mCanCombatMove == on)
-		return;
-	mCanCombatMove = on;
-	if (!HasEscortState(SMART_ESCORT_ESCORTING))
-	{
-		if (on && me->getVictim())
-		{
-			if (me->GetMotionMaster()->GetCurrentMovementGeneratorType() == IDLE_MOTION_TYPE)
-			{
-				SetRun(mRun);
-				me->GetMotionMaster()->MoveChase(me->getVictim());
-				me->CastStop();
-			}
-		}
-		else
-		{
-			me->StopMoving();
-			me->GetMotionMaster()->Clear(true);
-			me->GetMotionMaster()->MoveIdle();
-		}
-	}
+    if (mCanCombatMove == on)
+        return;
+    mCanCombatMove = on;
+    if (!HasEscortState(SMART_ESCORT_ESCORTING))
+    {
+        if (on && me->getVictim())
+        {
+            if (me->GetMotionMaster()->GetCurrentMovementGeneratorType() == IDLE_MOTION_TYPE)
+            {
+                SetRun(mRun);
+                me->GetMotionMaster()->MoveChase(me->getVictim());
+                me->CastStop();
+            }
+        }
+        else
+        {
+            me->StopMoving();
+            me->GetMotionMaster()->MoveIdle();
+        }
+    }
 }
 
 void SmartAI::SetFollow(Unit* target, float dist, float angle, uint32 credit, uint32 end, uint32 creditType)
