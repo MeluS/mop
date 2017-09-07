@@ -244,7 +244,7 @@ CREATE TABLE `realmlist` (
   `timezone` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `allowedSecurityLevel` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `population` float unsigned NOT NULL DEFAULT '0',
-  `gamebuild` int(10) unsigned NOT NULL DEFAULT '16135',
+  `gamebuild` int(10) unsigned NOT NULL DEFAULT '18019',
   `online` int(10) DEFAULT '0',
   `delay` int(10) unsigned NOT NULL DEFAULT '0',
   `queued` int(10) unsigned NOT NULL DEFAULT '0',
