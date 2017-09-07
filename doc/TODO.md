@@ -10,7 +10,6 @@ Pandaria Zones:
 -- Krasarang Wilds
 -- Kun-Lai Summit
 -- The Jade Forest
--- The Veiled Stair
 -- Timeless Isle
 -- Townlong Steppes
 -- Vale of Eternal Blossoms
