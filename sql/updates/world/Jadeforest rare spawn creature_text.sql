@@ -1,0 +1,9 @@
+REPLACE INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES (50338, 0, 0, 'The night is dark and savage.', 12, 0, 100, 0, 0, 0, 'Kor\'nas - SAY_AGGRO');
+REPLACE INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES (50350, 3, 0, 'Break them.', 12, 0, 100, 0, 0, 0, 'Morgrinn - SAY_AGGRO');
+REPLACE INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES (50363, 1, 0, 'No! I must report back to Her!', 12, 0, 100, 0, 0, 0, 'Krax\'ik - SAY_AGGRO');
+REPLACE INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES (50750, 5, 0, 'The pool stirs', 12, 0, 100, 0, 0, 0, 'Aethis - SAY_AGGRO');
+REPLACE INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES (50782, 6, 0, 'You die!', 12, 0, 100, 0, 0, 0, 'Sarnak - SAY_AGGRO');
+REPLACE INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES (50808, 7, 0, 'You brough strife to our lands! I will bring strife to you now!', 12, 0, 100, 0, 0, 0, 'Urobi - SAY_AGGRO');
+REPLACE INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES (50823, 2, 0, 'Gonna ook you!', 12, 0, 100, 0, 0, 0, 'Mister Ferocious - SAY_AGGRO');
+REPLACE INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES (51078, 4, 0, 'Gonna bash you into pretty flower food!', 12, 0, 100, 0, 0, 0, 'Ferdinand - SAY_AGGRO');
+
