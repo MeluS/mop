@@ -24,20 +24,20 @@ enum eSpells
     SPELL_DEVASTATION            = 126631,
     SPELL_HATED_BLAST            = 126628,
     SPELL_SHA_CORRUPTION         = 126625,
-    SPELL_UNTAMED_FURY           = 23719,
+    SPELL_UNTAMED_FURY           =  23719,
     SPELL_WHIRLWIND_OF_ANGER     = 126633,
     SPELL_CHI_TORPEDO            = 115008,
     SPELL_FLYING_SERPENT_KICK    = 118590,
-    SPELL_KNOCKDOWN              = 5164,
+    SPELL_KNOCKDOWN              =  5164,
     SPELL_SPINNING_CRANE_KICK    = 118593,
     SPELL_BITTER_BREW            = 118256,
     SPELL_THE_STEAMER            = 125899,
     SPELL_DEATH_FROM_ABOVE       = 118505,
     SPELL_WHIRLWIND              = 118503,
     SPELL_HEALING_SPHERE         = 119796,
-    SPELL_WATER_SPOUT            = 39207,
+    SPELL_WATER_SPOUT            =  39207,
     SPELL_KEN_KEN_RAMPAGE        = 118645,
-    SPELL_ENRAGE                 = 59697,
+    SPELL_ENRAGE                 =  59697,
     SPELL_GRAPPLE_OPPONENT       = 118647,
     SPELL_SLING_SWEAT            = 125943,
     SPELL_VULNERABLE             = 118676,
@@ -45,15 +45,27 @@ enum eSpells
     SPELL_TOSS_A_BOOM_BOOM       = 118402,
     SPELL_WIND_SWORD             = 113504,
     SPELL_WINDFUR_PUNCH          = 105497,
-    SPELL_FLAY                   = 32731,
+    SPELL_FLAY                   =  32731,
     SPELL_FULL_CONTACT_INTERVENE = 125954,
     SPELL_GROUND_PUMMEL          = 125971,
     SPELL_HEALISS_OIL            = 118631,
     SPELL_JUNGE_REMEDY           = 118634,
-    SPELL_MIND_FLAY              = 16568,
-    SPELL_ACID_SPLIT             = 9591,
-    SPELL_BACKSTAB               = 75360,
-    SPELL_VILE_SPITTLE           = 124951
+    SPELL_MIND_FLAY              =  16568,
+    SPELL_ACID_SPLIT             =   9591,
+    SPELL_BACKSTAB               =  75360,
+    SPELL_VILE_SPITTLE           = 124951,
+    SPELL_GOING_BANANAS          = 125363,
+    SPELL_BANANARANG             = 125311,
+    SPELL_TOSS_FILTH             = 125365,
+    SPELL_BELLOWING_RAGE         = 124297,
+    SPELL_EMPOWERING_FLAMES      = 130388,
+    SPELL_HOOF_STOMP             = 124289,
+    SPELL_RUSHING_CHARGE         = 124302,
+    SPELL_SHADOWBOLTS            = 125212,
+    SPELL_VOIDCLOUD              = 125241,
+    SPELL_CHI_BURST              = 125817,
+    SPELL_HEALING_MIST           = 125802,
+    SPELL_SPINNING_CRANE_KICK_2   = 125799,
 };
 
 enum eEvents
@@ -127,7 +139,19 @@ enum eEvents
     EVENT_ACID_SPLIT                 = 67,
     EVENT_BACKSTAB                   = 68,
     EVENT_VILE_SPITTLE               = 69,
-    EVENT_DESPAWN                    = 70
+    EVENT_DESPAWN                    = 70,
+    EVENT_GOING_BANANAS              = 71,
+    EVENT_BANANARANG                 = 72,
+    EVENT_TOSS_FILTH                 = 73,
+    EVENT_BELLOWING_RAGE             = 74,
+    EVENT_EMPOWERING_FLAMES          = 75,
+    EVENT_HOOF_STOMP                 = 76,    
+    EVENT_RUSHING_CHARGE             = 77,
+    EVENT_SHADOWBOLTS                = 78, /*Borginn Darkfist Shadowbolt*/
+    EVENT_VOIDCLOUD                  = 79,
+    EVENT_CHI_BURST                  = 80,
+    EVENT_HEALING_MIST               = 81,
+    EVENT_SPINNING_CRANE_KICK_2      = 82
 };
 
 enum eQuests
@@ -183,6 +207,19 @@ enum eDatas
     XUEN_PHASE_3 = 2,
     XUEN_PHASE_4 = 3,
     XUEN_PHASE_MAX = 4
+};
+
+enum eTexts
+{
+	SAY_AHONE_WANDERER_AGGRO 	= 0,
+	SAY_SKITHIK_AGGRO 		= 1,
+	SAY_NESSOS_ORACLE_AGGRO 	= 2,
+	SAY_HAVAK_AGGRO			= 3,
+	SAY_BORGINN_DARKFIST_AGGRO	= 4,
+	SAY_KORDA_TORROS_AGGRO		= 5,
+	SAY_ZAI_OUTCAST_AGGRO		= 6,
+	SAY_SCRITCH_AGGRO		= 7
+
 };
 
 #endif

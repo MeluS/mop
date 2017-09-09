@@ -108,6 +108,11 @@ class mob_kor_nas_nightsavage : public CreatureScript
                 events.ScheduleEvent(EVENT_VOIDCLOUD, 15000);
             }
 
+            void EnterCombat(Unit* /*who*/)
+            {
+            	Talk(SAY_KORNAS_AGGRO);
+            }
+
             void UpdateAI(const uint32 diff)
             {
                 if (!UpdateVictim())
@@ -176,6 +181,7 @@ class mob_krax_ik : public CreatureScript
 
             void EnterCombat(Unit* attacker)
             {
+            	Talk(SAY_KRAXIK_AGGRO);
                 me->RemoveAurasDueToSpell(SPELL_STEALTH);
             }
 
@@ -259,6 +265,11 @@ class mob_mister_ferocious : public CreatureScript
                 events.ScheduleEvent(EVENT_TOSS_FILTH, 15000);
             }
 
+            void EnterCombat(Unit* /*who*/)
+            {
+            	Talk(SAY_FEROCIOUS_AGGRO);
+            }
+
             void JustSummoned(Creature* summon)
             {
                 summon->DespawnOrUnsummon(12000);
@@ -292,6 +303,425 @@ class mob_mister_ferocious : public CreatureScript
                             if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
                                 me->CastSpell(target, SPELL_TOSS_FILTH, false);
                             events.ScheduleEvent(EVENT_TOSS_FILTH, 15000);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                DoMeleeAttackIfReady();
+            }
+        };
+};
+
+// Morgrinn Crackfang - 50350
+class mob_morgrinn_crackfang : public CreatureScript
+{
+    public:
+        mob_morgrinn_crackfang() : CreatureScript("mob_morgrinn_crackfang")
+        {
+        }
+
+        CreatureAI* GetAI(Creature* creature) const
+        {
+            return new mob_morgrinn_crackfangAI(creature);
+        }
+
+        struct mob_morgrinn_crackfangAI : public ScriptedAI
+        {
+            mob_morgrinn_crackfangAI(Creature* creature) : ScriptedAI(creature)
+            {
+            }
+
+            EventMap events;
+
+            void Reset()
+            {
+                events.Reset();
+
+                events.ScheduleEvent(EVENT_DEVASTATING_ARC, 40000);
+                events.ScheduleEvent(EVENT_SUMMON_QUILEN, 12000);
+                events.ScheduleEvent(EVENT_TITANIC_STRENGTH, 20000);
+            }
+
+            void EnterCombat(Unit* /*who*/)
+            {
+            	Talk(SAY_MORGRINN_AGGRO);
+            }
+
+            void JustDied(Unit* /*killer*/)
+            {
+            }
+
+            void UpdateAI(const uint32 diff)
+            {
+                if (!UpdateVictim())
+                    return;
+
+                if (me->HasUnitState(UNIT_STATE_CASTING))
+                    return;
+
+                events.Update(diff);
+
+                while (uint32 eventId = events.ExecuteEvent())
+                {
+                    switch (eventId)
+                    {
+                        case EVENT_DEVASTATING_ARC:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_DEVASTATING_ARC, false);
+                            events.ScheduleEvent(EVENT_DEVASTATING_ARC,      60000);
+                            break;
+                        case EVENT_SUMMON_QUILEN:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_SUMMON_QUILEN, false);
+                            events.ScheduleEvent(EVENT_SUMMON_QUILEN, 50000);
+                            break;
+                        case EVENT_TITANIC_STRENGTH:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_TITANIC_STRENGTH, false);
+                            events.ScheduleEvent(EVENT_TITANIC_STRENGTH,      30000);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                DoMeleeAttackIfReady();
+            }
+        };
+};
+
+// Ferdinand - 51078
+class mob_ferdinand : public CreatureScript
+{
+    public:
+        mob_ferdinand() : CreatureScript("mob_ferdinand")
+        {
+        }
+
+        CreatureAI* GetAI(Creature* creature) const
+        {
+            return new mob_ferdinandAI(creature);
+        }
+
+        struct mob_ferdinandAI : public ScriptedAI
+        {
+            mob_ferdinandAI(Creature* creature) : ScriptedAI(creature)
+            {
+            }
+
+            EventMap events;
+
+            void Reset()
+            {
+                events.Reset();
+
+                events.ScheduleEvent(EVENT_BELLOWING_RAGE,   20000);
+                events.ScheduleEvent(EVENT_HOOF_STOMP,  10000);
+                events.ScheduleEvent(EVENT_RUSHING_CHARGE, 10000);            
+            }
+
+            void EnterCombat(Unit* /*who*/)
+            {
+            	Talk(SAY_FERDINAND_AGGRO);
+            }
+
+
+            void JustDied(Unit* /*killer*/)
+            {
+            }
+
+            void JustSummoned(Creature* summon)
+            {
+                summon->DespawnOrUnsummon(12000);
+            }
+
+            void UpdateAI(const uint32 diff)
+            {
+                if (!UpdateVictim())
+                    return;
+
+                if (me->HasUnitState(UNIT_STATE_CASTING))
+                    return;
+
+                events.Update(diff);
+
+
+                while (uint32 eventId = events.ExecuteEvent())
+                {
+                    switch (eventId)
+                    {
+                        case EVENT_BELLOWING_RAGE:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_BELLOWING_RAGE, false);
+                            events.ScheduleEvent(EVENT_BELLOWING_RAGE,       30000);
+                            break;
+                        case EVENT_HOOF_STOMP:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_HOOF_STOMP, false);
+                            events.ScheduleEvent(EVENT_HOOF_STOMP, 15000);
+                            break;
+                        case EVENT_RUSHING_CHARGE:
+                                if(Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                    me->CastSpell(target, SPELL_RUSHING_CHARGE, false);
+                                events.ScheduleEvent(EVENT_RUSHING_CHARGE, 10000);
+                                break;
+                        default:
+                            break;
+                    }
+                }
+
+                DoMeleeAttackIfReady();
+            }
+        };
+};
+
+// Aethis - 50750
+class mob_aethis : public CreatureScript
+{
+    public:
+        mob_aethis() : CreatureScript("mob_aethis")
+        {
+        }
+
+        CreatureAI* GetAI(Creature* creature) const
+        {
+            return new mob_aethisAI(creature);
+        }
+
+        struct mob_aethisAI : public ScriptedAI
+        {
+            mob_aethisAI(Creature* creature) : ScriptedAI(creature)
+            {
+            }
+
+            EventMap events;
+
+            void Reset()
+            {
+                events.Reset();
+                
+                events.ScheduleEvent(EVENT_RAIN_DANCE,   5000);
+                events.ScheduleEvent(EVENT_TORRENT,     15000);
+                events.ScheduleEvent(EVENT_WATER_BOLT,  25000);
+            }
+
+            void EnterCombat(Unit* /*who*/)
+            {
+            	Talk(SAY_AETHIS_AGGRO);
+            }
+
+            void JustDied(Unit* /*killer*/)
+            {
+            }
+
+            void JustSummoned(Creature* summon)
+            {
+                summon->DespawnOrUnsummon(12000);
+            }
+
+            void UpdateAI(const uint32 diff)
+            {
+                if (!UpdateVictim())
+                    return;
+
+                if (me->HasUnitState(UNIT_STATE_CASTING))
+                    return;
+
+                events.Update(diff);
+
+
+                while (uint32 eventId = events.ExecuteEvent())
+                {
+                    switch (eventId)
+                    {
+                        case EVENT_RAIN_DANCE:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_RAIN_DANCE, false);
+                            events.ScheduleEvent(EVENT_RAIN_DANCE,       25000);
+                            break;
+                        case EVENT_TORRENT:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_TORRENT, false);
+                            events.ScheduleEvent(EVENT_TORRENT, 15000);
+                            break;
+                        case EVENT_WATER_BOLT:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_WATER_BOLT, false);
+                            events.ScheduleEvent(EVENT_WATER_BOLT, 10000);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                DoMeleeAttackIfReady();
+            }
+        };
+};
+
+// Sarnak - 50782
+class mob_sarnak : public CreatureScript
+{
+    public:
+        mob_sarnak() : CreatureScript("mob_sarnak")
+        {
+        }
+
+        CreatureAI* GetAI(Creature* creature) const
+        {
+            return new mob_sarnakAI(creature);
+        }
+
+        struct mob_sarnakAI : public ScriptedAI
+        {
+            mob_sarnakAI(Creature* creature) : ScriptedAI(creature)
+            {
+            }
+
+            EventMap events;
+
+            void Reset()
+            {
+                events.Reset();
+
+                events.ScheduleEvent(EVENT_GRAPPLING_HOOK,   17000);
+                events.ScheduleEvent(EVENT_VANISH,     12000);
+                events.ScheduleEvent(EVENT_VICIOUS_REND,  7000);
+            }
+            void EnterCombat(Unit* /*who*/)
+            {
+            	Talk(SAY_SARNAK_AGGRO);
+            }
+
+            void JustDied(Unit* /*killer*/)
+            {
+            }
+
+            void JustSummoned(Creature* summon)
+            {
+                summon->DespawnOrUnsummon(12000);
+            }
+
+            void UpdateAI(const uint32 diff)
+            {
+                if (!UpdateVictim())
+                    return;
+
+                if (me->HasUnitState(UNIT_STATE_CASTING))
+                    return;
+
+                events.Update(diff);
+
+
+                while (uint32 eventId = events.ExecuteEvent())
+                {
+                    switch (eventId)
+                    {
+                        case EVENT_GRAPPLING_HOOK:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_GRAPPLING_HOOK, false);
+                            events.ScheduleEvent(EVENT_GRAPPLING_HOOK,       5000);
+                            break;
+                        case EVENT_VANISH:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_VANISH, false);
+                            events.ScheduleEvent(EVENT_VANISH, 30000);
+                            events.ScheduleEvent(EVENT_SMOKED_BLADE, urand(0,8000));
+                            break;
+                        case EVENT_SMOKED_BLADE:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_SMOKED_BLADE, false);
+                                events.ScheduleEvent(EVENT_SMOKED_BLADE, 31500);
+                        case EVENT_VICIOUS_REND:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_VICIOUS_REND, false);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                DoMeleeAttackIfReady();
+            }
+        };
+};
+
+// Urobi the Walker - 50808
+class mob_urobi_walker : public CreatureScript
+{
+    public:
+        mob_urobi_walker() : CreatureScript("mob_urobi_walker")
+        {
+        }
+
+        CreatureAI* GetAI(Creature* creature) const
+        {
+            return new mob_urobi_walkerAI(creature);
+        }
+
+        struct mob_urobi_walkerAI : public ScriptedAI
+        {
+            mob_urobi_walkerAI(Creature* creature) : ScriptedAI(creature)
+            {
+            }
+
+            EventMap events;
+
+            void Reset()
+            {
+                events.Reset();
+
+                events.ScheduleEvent(EVENT_CHI_BURST,   10000);
+                events.ScheduleEvent(EVENT_HEALING_MIST,     15000);
+                events.ScheduleEvent(EVENT_SPINNING_CRANE_KICK,  5000);          
+            }
+            void EnterCombat(Unit* /*who*/)
+            {
+            	Talk(SAY_UROBI_AGGRO);
+            }
+
+
+
+            void JustDied(Unit* /*killer*/)
+            {
+            }
+
+            void JustSummoned(Creature* summon)
+            {
+                summon->DespawnOrUnsummon(12000);
+            }
+
+            void UpdateAI(const uint32 diff)
+            {
+                if (!UpdateVictim())
+                    return;
+
+                if (me->HasUnitState(UNIT_STATE_CASTING))
+                    return;
+
+                events.Update(diff);
+
+
+                while (uint32 eventId = events.ExecuteEvent())
+                {
+                    switch (eventId)
+                    {
+                        case EVENT_CHI_BURST:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_CHI_BURST, false);
+                            events.ScheduleEvent(EVENT_CHI_BURST,       5000);
+                            break;
+                        case EVENT_HEALING_MIST:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_HEALING_MIST, false);
+                            events.ScheduleEvent(EVENT_HEALING_MIST, 35000);
+                            break;
+                        case EVENT_SPINNING_CRANE_KICK:
+                            if (Unit* target = SelectTarget(SELECT_TARGET_TOPAGGRO))
+                                me->CastSpell(target, SPELL_SPINNING_CRANE_KICK, false);
+                            events.ScheduleEvent(EVENT_SPINNING_CRANE_KICK, 15000);
                             break;
                         default:
                             break;
@@ -3176,6 +3606,11 @@ void AddSC_jade_forest()
     new mob_kor_nas_nightsavage();
     new mob_krax_ik();
     new mob_mister_ferocious();
+    new mob_morgrinn_crackfang();
+    new mob_ferdinand();
+    new mob_aethis();
+    new mob_sarnak();
+    new mob_urobi_walker();
     // Elite mobs
     new mob_shadow_of_doubt();
     new mob_akkalar();
